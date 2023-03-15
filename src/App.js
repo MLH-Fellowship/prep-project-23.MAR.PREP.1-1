@@ -5,7 +5,7 @@ import logo from './mlh-prep.png'
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("New York City");
   const [results, setResults] = useState(null);
   
   useEffect(() => {
@@ -37,10 +37,7 @@ function App() {
   }, [])
 
   useEffect(() => { 
-    if (city === "") {
-      return;
-    }
-
+    
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
       .then(res => res.json())
       .then(
